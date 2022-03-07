@@ -52,13 +52,18 @@ Language: **MySQL**
 
 ```mysql
 # Write your MySQL query statement below
- WITH CTE AS(
+ /*WITH CTE AS(
      SELECT email, ROW_NUMBER() OVER(
          PARTITION BY email) as ROW_NUM
      FROM Person
  )
  
-    SELECT distinct email as Email
-    FROM CTE
-    WHERE ROW_NUM > 1 
+    SELECT distinct email as Email
+    FROM CTE
+    WHERE ROW_NUM > 1 */
+    
+SELECT distinct email as Email
+FROM Person
+GROUP BY email
+HAVING count(*)>1
 ```
